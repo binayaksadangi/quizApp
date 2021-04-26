@@ -28,5 +28,34 @@ const quizData = [
         d: 'Java Supplier',
         correct: 'b'
     }
-]
+];
 
+const question = document.getElementById("question");
+const aText = document.getElementById("aText");
+const bText = document.getElementById("bText");
+const cText = document.getElementById("cText");
+const dText = document.getElementById("dText");
+const submitBtn = document.getElementById('submit');
+let currentQuiz = 0;
+
+loadQuiz();
+console.log(quizData.length);
+function loadQuiz(){
+    const currentQuizData = quizData[currentQuiz];
+    question.innerText = currentQuizData.question;
+    aText.innerText = currentQuizData.a;
+    bText.innerText = currentQuizData.b;
+    cText.innerText = currentQuizData.c;
+    dText.innerText = currentQuizData.d;
+
+}
+submitBtn.addEventListener('click', ()=>{
+    currentQuiz++;
+    if(currentQuiz < quizData.length){
+        loadQuiz();
+    }
+    else{
+        alert("you have finished the quiz!");
+    }
+    
+})
